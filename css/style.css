@@ -1,0 +1,67 @@
+body
+{
+    background-color:#f5f5f5;
+}
+.method-container
+{
+    background-color: white;
+   box-shadow:  0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
+}
+.bg-primary
+{
+    box-shadow:  0 1px 1px 0 rgb(0 0 0 / 6%), 0 2px 5px 0 rgb(0 0 0 / 20%);
+}
+select
+{
+    width: 40%;
+    padding: 7px;
+    border-radius: 10px;
+    text-align: center;
+    border:2px solid #09c; 
+    font-size: 1.2rem;
+}
+.equation input
+{
+    width: 100%;
+    padding: 7px;
+    border-radius: 10px;
+    text-align: center;
+    border:2px solid #09c; 
+    font-size: 1.2rem;
+}
+
+.fdash
+{
+    width: 100%;
+    padding: 7px;
+    
+    border-radius: 10px;
+    text-align: center;
+    border:2px solid #09c; 
+    font-size: 1.2rem;
+}
+.vari,.varimat
+{
+    width: 25%;
+    display: flex;
+}
+.vari label,.varimat label
+{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.vari input,.varimat input
+{
+    width: 50%;
+    padding-left: 5px;
+    border-radius: 10px;
+    text-align: center;
+    border:2px solid #09c; 
+    font-size: 1.2rem;
+}
+.matrix h3,.matrixLu h3 ,.matrixCra h3
+{
+    border-left: 7px solid #09c;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}

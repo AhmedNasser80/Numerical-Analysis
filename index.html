@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Numerical</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="bg-primary text-white py-3 pl-3"><h3>Numerical Analysis Calculator</h3></div>
+    <div class="mt-5 method-container container d-flex flex-column justify-content-center align-items-center">
+      <div class="methodes mt-5 w-50 text-center">
+        <h4>Choose a Method</h4>
+        <select id="Methodselector">
+            <option selected="selected" disabled>Methods</option>
+            <option value="Bisectio">Bisection</option>
+            <option value="FalsePosition">False position</option>
+            <option value="SimpleFixedPoint">Simple Fixed Point</option>
+            <option value="Newten">Newton</option>
+            <option value="Secant">Secant</option>
+            <option value="GaussianElimination">Gaussian Elimination</option>
+            <option value="LUDecomposition">LU Decomposition</option>
+             <option value="CramerRule">Cramer's rule</option>
+        </select>
+      </div>
+
+
+      <div class="equation mt-5 w-50 text-center">
+        <div class="vari flex-column Bisectio FalsePosition SimpleFixedPoint Newten Secant w-100">
+          <h4>Enter an Equation</h4>
+          <input type="text" id="eq" class="w-100"/>
+        </div>
+        <div class="vari w-100 Newten flex-column">
+          <h5 class="mt-5">Enter The Drivative of The Equation</h5>
+          <input type="text" class="fdash mx-auto" id="fdash">
+        </div>  
+      </div>
+
+
+    <div class="inputs mt-5 d-flex justify-content-around">
+        <div class="vari text-center Bisectio FalsePosition">
+          <label for="xl">Xl=</label>
+          <input type="number" id="xl" />
+        </div>
+        <div class="vari text-center Bisectio FalsePosition">
+          <label for="xu">Xu=</label>
+          <input type="number" id="xu" />
+        </div>
+        <div class="vari text-center SimpleFixedPoint Newten Secant">
+          <label for="xnode">X0=</label>
+          <input type="number" id="xnode" />
+        </div>
+        <div class="vari text-center  Secant">
+          <label for="xmin">X-1=</label>
+          <input type="number" id="xmin" />
+        </div>
+        <div class="vari text-center Bisectio FalsePosition SimpleFixedPoint Newten Secant">
+          <label for="err">Error=</label>
+          <input type="number" id="err" />
+        </div>
+        <div class="d-flex flex-column align-items-center">
+          <h2 class="vari GaussianElimination LUDecomposition CramerRule mb-3">Enter Your Matrix</h2>
+            <div class="vari GaussianElimination LUDecomposition CramerRule w-100">
+              <div class="text-center">
+                <label for="x00">X00=</label>
+                <input type="number" id="x00" />
+              </div>
+              <div class=" text-center">
+                <label for="x01">X01=</label>
+                <input type="number" id="x01" />
+              </div>
+              <div class=" text-center">
+                <label for="x02">X02=</label>
+                <input type="number" id="x02" />
+              </div>
+              <div class=" text-center">
+                <label for="x03">X03=</label>
+                <input type="number" id="x03" />
+              </div>
+              </div>
+              <div class="vari GaussianElimination LUDecomposition CramerRule w-100">
+                <div class=" text-center">
+                  <label for="x10">X10=</label>
+                  <input type="number" id="x10" />
+                </div>
+                <div class=" text-center">
+                  <label for="x11">X11=</label>
+                  <input type="number" id="x11" />
+                </div>
+                <div class=" text-center">
+                  <label for="x12">X12=</label>
+                  <input type="number" id="x12" />
+                </div>
+                <div class=" text-center">
+                  <label for="x13">X13=</label>
+                  <input type="number" id="x13" />
+                </div>
+                </div>
+                <div class="vari GaussianElimination LUDecomposition CramerRule w-100">
+                  <div class=" text-center">
+                    <label for="x20">X20=</label>
+                    <input type="number" id="x20" />
+                  </div>
+                  <div class=" text-center">
+                    <label for="x21">X21=</label>
+                    <input type="number" id="x21" />
+                  </div>
+                  <div class=" text-center">
+                    <label for="x22">X22=</label>
+                    <input type="number" id="x22" />
+                  </div>
+                  <div class=" text-center">
+                    <label for="x23">X23=</label>
+                    <input type="number" id="x23" />
+                  </div>
+                  </div>
+        </div>
+      </div>
+
+
+      <div class="my-3 vari Bisectio FalsePosition SimpleFixedPoint Newten Secant GaussianElimination LUDecomposition CramerRule">
+        <button class="btn btn-outline-success mx-3" id="calc">Calculate</button>
+        <button class="btn btn-outline-info mx-3 px-3" id="clear">Clear</button>
+      </div>
+
+
+      
+      <table class="table text-center mx-auto my-5 shadow py-5">
+      <thead id="tableHead" class="bg-primary text-light"></thead>
+      <tbody id="tableBody" class="bg-light"></tbody>
+      </table>
+      <h5 id="root"></h5>
+
+      <div class="matrix">
+        <h3 class="mt-2">Final Matrix Result</h3>
+        <div class="d-flex flex-column">
+          <div class="varimat w-100">
+            <div class="text-center">
+              <label for="r00">X00=</label>
+              <input type="number" id="r00"disabled/>
+            </div>
+            <div class=" text-center">
+              <label for="r01">X01=</label>
+              <input type="number" id="r01"disabled />
+            </div>
+            <div class=" text-center">
+              <label for="r02">X02=</label>
+              <input type="number" id="r02"disabled />
+            </div>
+            <div class=" text-center">
+              <label for="r03">X03=</label>
+              <input type="number" id="r03" disabled/>
+            </div>
+            </div>
+            <div class="varimat  w-100">
+              <div class=" text-center">
+                <label for="r10">X10=</label>
+                <input type="number" id="r10"disabled />
+              </div>
+              <div class=" text-center">
+                <label for="r11">X11=</label>
+                <input type="number" id="r11"disabled />
+              </div>
+              <div class=" text-center">
+                <label for="r12">X12=</label>
+                <input type="number" id="r12"disabled />
+              </div>
+              <div class=" text-center">
+                <label for="r13">X13=</label>
+                <input type="number" id="r13" disabled/>
+              </div>
+              </div>
+              <div class="varimat w-100">
+                <div class=" text-center">
+                  <label for="r20">X20=</label>
+                  <input type="number" id="r20"disabled />
+                </div>
+                <div class=" text-center">
+                  <label for="r21">X21=</label>
+                  <input type="number" id="r21"disabled />
+                </div>
+                <div class=" text-center">
+                  <label for="r22">X22=</label>
+                  <input type="number" id="r22"disabled />
+                </div>
+                <div class=" text-center">
+                  <label for="r23">X23=</label>
+                  <input type="number" id="r23"disabled />
+                </div>
+                </div>
+      </div>
+          
+        <div class="my-5">
+          <h3>For M's</h3>
+          <div class="d-flex justify-content-center">
+            <div class="varimat w-50 ">
+              <div class="text-center">
+                <label for="m21">m21=</label>
+                <input type="number" id="m21" disabled/>
+              </div>
+              <div class="text-center">
+                <label for="m31">m31=</label>
+                <input type="number" id="m31" disabled/>
+              </div>
+              <div class="text-center">
+                <label for="m32">m32=</label>
+                <input type="number" id="m32" disabled/>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="my-5">
+        <h3>For X's</h3>
+        <div class="d-flex justify-content-center">
+          <div class="varimat w-50 ">
+            <div class="text-center">
+              <label for="x1">X1=</label>
+              <input type="number" id="x1" disabled/>
+            </div>
+            <div class="text-center">
+              <label for="x2">X2=</label>
+              <input type="number" id="x2" disabled />
+            </div>
+            <div class="text-center">
+              <label for="x3">X3=</label>
+              <input type="number" id="x3" disabled/>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="matrixLu w-100">
+<div class="my-5">
+  <h3>For U's</h3>
+  <div class="d-flex flex-column">
+    <div class="varimat w-100">
+      <div class="text-center">
+        <label for="u00">U00=</label>
+        <input type="number" id="u00"disabled/>
+      </div>
+      <div class=" text-center">
+        <label for="u01">U01=</label>
+        <input type="number" id="u01"disabled />
+      </div>
+      <div class=" text-center">
+        <label for="u02">U02=</label>
+        <input type="number" id="u02"disabled />
+      </div>
+      </div>
+      <div class="varimat  w-100">
+        <div class=" text-center">
+          <label for="u10">U10=</label>
+          <input type="number" id="u10"disabled />
+        </div>
+        <div class=" text-center">
+          <label for="u11">U11=</label>
+          <input type="number" id="u11"disabled />
+        </div>
+        <div class=" text-center">
+          <label for="u12">U12=</label>
+          <input type="number" id="u12"disabled />
+        </div>
+        </div>
+        <div class="varimat w-100">
+          <div class=" text-center">
+            <label for="u20">U20=</label>
+            <input type="number" id="u20"disabled />
+          </div>
+          <div class=" text-center">
+            <label for="u21">U21=</label>
+            <input type="number" id="u21"disabled />
+          </div>
+          <div class=" text-center">
+            <label for="u22">U22=</label>
+            <input type="number" id="u22"disabled />
+          </div>
+          </div>
+</div>
+</div>
+      
+
+<div class="my-5">
+  <h3>For L's</h3>
+    <div class="d-flex flex-column">
+      <div class="varimat w-100">
+        <div class="text-center">
+          <label for="l00">L00=</label>
+          <input type="number" id="l00"disabled/>
+        </div>
+        <div class=" text-center">
+          <label for="l01">L01=</label>
+          <input type="number" id="l01"disabled />
+        </div>
+        <div class=" text-center">
+          <label for="l02">L02=</label>
+          <input type="number" id="l02"disabled />
+        </div>
+        </div>
+        <div class="varimat  w-100">
+          <div class=" text-center">
+            <label for="l10">L10=</label>
+            <input type="number" id="l10"disabled />
+          </div>
+          <div class=" text-center">
+            <label for="l11">L11=</label>
+            <input type="number" id="l11"disabled />
+          </div>
+          <div class=" text-center">
+            <label for="l12">L12=</label>
+            <input type="number" id="l12"disabled />
+          </div>
+          </div>
+          <div class="varimat w-100">
+            <div class=" text-center">
+              <label for="l20">L20=</label>
+              <input type="number" id="l20"disabled />
+            </div>
+            <div class=" text-center">
+              <label for="l21">L21=</label>
+              <input type="number" id="l21"disabled />
+            </div>
+            <div class=" text-center">
+              <label for="l22">L22=</label>
+              <input type="number" id="l22"disabled />
+            </div>
+            </div>
+  </div>
+</div>
+    
+     
+<div class="my-5">
+  <h3>For B's</h3>
+  <div class="varimat w-100 d-flex flex-column align-items-center">
+    <div class="text-center">
+      <label for="b03">B03=</label>
+      <input type="number" id="b03"disabled class="w-50"/>
+    </div>
+    <div class=" text-center">
+      <label for="b13">B13=</label>
+      <input type="number" id="b13"disabled class="w-50"/>
+    </div>
+    <div class=" text-center">
+      <label for="b23">B23=</label>
+      <input type="number" id="b23"disabled class="w-50"/>
+    </div>
+    </div>
+</div>
+
+
+<div class="my-5">
+  <h3>For C's</h3>
+  <div class="varimat w-100 d-flex flex-column align-items-center">
+    <div class="text-center">
+      <label for="c1">C1=</label>
+      <input type="number" id="c1"disabled class="w-50"/>
+    </div>
+    <div class=" text-center">
+      <label for="c2">C2=</label>
+      <input type="number" id="c2"disabled class="w-50"/>
+    </div>
+    <div class=" text-center">
+      <label for="c3">C3=</label>
+      <input type="number" id="c3"disabled class="w-50"/>
+    </div>
+    </div>
+</div>
+
+    </div>
+
+    <div class="matrixCra w-100">
+      <div class="my-5">
+        <h3>Deter A's</h3>
+        <div class="varimat w-100 d-flex flex-column align-items-center">
+          <div class="text-center">
+            <label for="a0">A0=</label>
+            <input type="number" id="a0" disabled class="w-50"/>
+          </div>
+          <div class=" text-center">
+            <label for="a1">A1=</label>
+            <input type="number" id="a1" disabled class="w-50"/>
+          </div>
+          <div class=" text-center">
+            <label for="a2">A2=</label>
+            <input type="number" id="a2" disabled class="w-50"/>
+          </div>
+          <div class=" text-center">
+            <label for="a3">A3=</label>
+            <input type="number" id="a3" disabled class="w-50"/>
+          </div>
+          </div>
+      </div>
+      <div class="my-5">
+        <h3>For X's</h3>
+        <div class="varimat w-100 d-flex flex-column align-items-center">
+          <div class="text-center">
+            <label for="xc1">X1=</label>
+            <input type="number" id="xc1" disabled class="w-50"/>
+          </div>
+          <div class=" text-center">
+            <label for="xc2">X2=</label>
+            <input type="number" id="xc2" disabled class="w-50"/>
+          </div>
+          <div class=" text-center">
+            <label for="xc3">X3=</label>
+            <input type="number" id="xc3" disabled class="w-50"/>
+          </div>
+          </div>
+      </div>
+    </div>
+    
+    <script src="Js/jquery-3.2.1.min.js"></script>
+    <script src="Js/popper.js"></script>
+    <script src="Js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
